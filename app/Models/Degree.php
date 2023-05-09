@@ -8,13 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Degree extends Model
 {
     use HasFactory;
-    public $table = "degrees";
-    protected $fillable = array("*");
 
-    // union de las tablas degree e internship
-    public function internships () {
-        return $this->hasMany(Internship::class , 'degree_internship');
-    }
+    public $table = "degrees";
+    protected $fillable = [
+        'nombre',
+        'id'
+    ];
+
+    // // union de las tablas degree e internship
+    // public function internships () {
+    //     return $this->belongsToMany(Internship::class , 'degree_internship');
+    // }
 
     
 

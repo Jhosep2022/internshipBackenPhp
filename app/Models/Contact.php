@@ -8,8 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
+
     public $table = "contacts";
-    protected $fillable = array("*");
+    protected $fillable = [
+        'email',
+        'phone',
+        'facebook',
+        'id'
+    ];
     
     // union de las tablas company e contact
     public function companies() {

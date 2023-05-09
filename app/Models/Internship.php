@@ -9,7 +9,19 @@ class Internship extends Model
 {
     use HasFactory;
     public $table = "internships";
-    protected $fillable = array("*");
+    protected $fillable = 
+    [
+        'nombre',
+        'descripcion',
+        'responsabilidades',
+        'requisitos',
+        'fecha',
+        'fecha_limite',
+        'degree_id',
+        'company_id',
+        'foto',
+        'id'
+    ];
 
     // union de las tablas degree e internship
     public function degrees () {

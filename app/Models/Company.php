@@ -9,7 +9,15 @@ class Company extends Model
 {
     use HasFactory;
     public $table = "companies";
-    protected $fillable = array("*");
+    protected $fillable = [
+        'nombre',
+        'descripcion',
+        'fecha',
+        'contact_id',
+        'foto',
+        'id'
+    
+    ];
     
     // union de las tablas company e contact
     public function contacts() {
