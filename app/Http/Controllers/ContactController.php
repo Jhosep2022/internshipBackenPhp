@@ -42,12 +42,45 @@ class ContactController extends Controller
                 ]);
             }
         }else{
-            return reponse()->json([
+            return response()->json([
                 'error'=>true,
                 'mensaje'=>'No existe la carrera'
             ]);
         }
     }
+
+    public function show($id){
+        $e = Contact::find($id);
+        if(isset($e)){
+            return response()->json([
+                'data'=>$e,
+                'mensaje'=>'Se ha encontrado el contacto correctamente'
+            ]);
+        }else{
+            return response()->json([  // Aquí está la corrección: 'reponse' -> 'response'
+                'error'=>true,
+                'mensaje'=>'No existe el contacto'
+            ]);
+        }
+    }
+    
+
+    public function destroy($id){
+        $e = Contact::find($id);
+        if(isset($e)){
+            $e->delete();
+            return response()->json([
+                'data'=>$e,
+                'mensaje'=>'Se ha eliminado correctamente'
+            ]);
+        }else{
+            return response()->json([  // Aquí está la corrección: 'reponse' -> 'response'
+                'error'=>true,
+                'mensaje'=>'No existe la carrera'
+            ]);
+        }
+    }
+
 }
 
 

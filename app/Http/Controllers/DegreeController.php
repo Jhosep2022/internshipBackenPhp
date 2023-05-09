@@ -18,7 +18,7 @@ class DegreeController extends Controller
         $e = Degree::create($inputs);
         return response()->json([
             'data'=>$e,
-            'mensaje'=>'Se ha actualizado correctamente'
+            'mensaje'=>'Se ha creado correctamente'
         ]);
     }
 
@@ -39,15 +39,14 @@ class DegreeController extends Controller
                 ]);
             }
         }else{
-            return reponse()->json([
+            return response()->json([
                 'error'=>true,
                 'mensaje'=>'No existe la carrera'
             ]);
         }
     }
 
-    public function show($id)
-    {
+    public function show($id){
         $e = Degree::find($id);
         if(isset($e)){
             return response()->json([
@@ -55,7 +54,7 @@ class DegreeController extends Controller
                 'mensaje'=>'Se ha encontrado la carrera correctamente'
             ]);
         }else{
-            return reponse()->json([
+            return response()->json([  // Aquí está la corrección: 'reponse' -> 'response'
                 'error'=>true,
                 'mensaje'=>'No existe la carrera'
             ]);
@@ -65,20 +64,13 @@ class DegreeController extends Controller
     public function destroy($id){
         $e = Degree::find($id);
         if(isset($e)){
-            $res = Degree::destroy($id);
-            if($res){
-                return response()->json([
-                    'data'=>$e,
-                    'mensaje'=>'Se ha eliminado correctamente'
-                ]); 
-            }else{
-                return response()->json([
-                    'data'=>$e,
-                    'mensaje'=>'No se ha podido eliminar'
-                ]);
-            }
+            $e->delete();
+            return response()->json([
+                'data'=>$e,
+                'mensaje'=>'Se ha eliminado correctamente'
+            ]);
         }else{
-            return reponse()->json([
+            return response()->json([  // Aquí está la corrección: 'reponse' -> 'response'
                 'error'=>true,
                 'mensaje'=>'No existe la carrera'
             ]);

@@ -9,24 +9,26 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up()
+{
+    if (!Schema::hasTable('companies')) {
         Schema::create('companies', function (Blueprint $table) {
-            $table->bigIncrements("id");
-            $table->string("nombre");
-            $table->string("descripcion");
-            $table->date("fecha");
+            $table->bigIncrements('id');
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->date('fecha');
+            $table->text('foto');
             $table->unsignedBigInteger('contact_id');
-            $table->text("foto");
             $table->timestamps();
+
+            $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
         });
     }
+}
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('companies');
-    }
+public function down()
+{
+    Schema::dropIfExists('companies');
+}
+
 };
