@@ -14,30 +14,28 @@ use App\Models\Degree;
  */
 class InternshipFactory extends Factory
 {
+    protected $model = Internship::class;
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
-{
-    $contact = Contact::inRandomOrder()->first();
-    $company = Company::inRandomOrder()->first();
-    $degree = Degree::inRandomOrder()->first();
 
-    if (!$contact || !$company || !$degree) {
-        throw new \Exception('No se pudo crear el contacto, la empresa o el grado');
+
+    public function definition()
+    {
+        return [
+            'nombre' => $this->faker->jobTitle,
+            'descripcion' => $this->faker->text(1000),
+            'resposabilidades' => $this->faker->sentence,
+            'requisitos' => $this->faker->sentence,
+            'fecha' => $this->faker->date,
+            'fecha_limite' => $this->faker->date,
+            'contact_id' => Contact::factory(),
+            'degree_id' => Degree::factory(),
+            'company_id' => Company::factory(),
+            'foto' => $this->faker->imageUrl(640, 480),
+        ];
     }
-
-    return [
-        'nombre' => $this->faker->name,
-        'descripcion' => $this->faker->paragraph, 
-        'fecha' => $this->faker->date,
-        'contact_id' => $contact->id, 
-        'company_id' => $company->id,
-        'degree_id' => $degree->id,
-        'foto' => $this->faker->imageUrl(640, 480),
-    ];
-}
 
 }

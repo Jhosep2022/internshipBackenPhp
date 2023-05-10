@@ -18,7 +18,5 @@ class Contact extends Model
     ];
     
     // union de las tablas company e contact
-    public function companies() {
-        return $this->belongsToMany(Company::class, 'contact_company');
-    }
+    
 }

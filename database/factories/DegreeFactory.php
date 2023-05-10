@@ -20,7 +20,7 @@ class DegreeFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => $this->faker->name, // Elimina los paréntesis después de 'name'
+            'nombre' => $this->faker->jobTitle,
         ];
         
     }

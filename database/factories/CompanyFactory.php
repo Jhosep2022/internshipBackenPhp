@@ -10,6 +10,7 @@ use App\Models\Company;
  */
 class CompanyFactory extends Factory
 {
+    protected $model = Company::class;
     /**
      * Define the model's default state.
      *
@@ -17,17 +18,11 @@ class CompanyFactory extends Factory
      */
     public function definition(): array
     {
-        $contact = Contact::inRandomOrder()->first();
-        
-        if(!$contact){
-            throw new Exception('No se pudo crear el contacto');
-        }
         return [
-            //
-            'nombre' => $this->faker->name,
-            'descripcion' => $this->faker->paragraph, // Utiliza 'paragraph' para generar una descr$contact->id,ipción aleatoria
-            'fecha' => $this->faker->date, // Utiliza 'date' para generar una fecha aleatoria
-            'contact_id' => $contact-> id, // Suponiendo que 'contact_id' es un número aleatorio entre 1 y 100
+            'nombre' => $this->faker->company,
+            'descripcion' => $this->faker->text(1000),
+            'fecha' => $this->faker->date,
+            'contact_id' => Contact::factory(),
             'foto' => $this->faker->imageUrl(640, 480),
         ];
     }

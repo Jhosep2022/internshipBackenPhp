@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\InternshipController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DegreeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +24,15 @@ Route::get('/', function () {
 
 //genera un post 
 Route::post('/contacts', [ContactController::class, 'store']);
+
+//genera un get
+Route::get('/contacts', [ContactController::class, 'index']);
+
+//genera un get
+Route::get('/contacts/{id}', [ContactController::class, 'show']);
+
+//genera un put
+Route::put('/contacts/{id}', [ContactController::class, 'update']);
+
+//genera un delete
+Route::delete('/contacts/{id}', [ContactController::class, 'destroy']);

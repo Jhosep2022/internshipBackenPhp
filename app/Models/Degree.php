@@ -15,11 +15,4 @@ class Degree extends Model
         'id'
     ];
 
-    // // union de las tablas degree e internship
-    // public function internships () {
-    //     return $this->belongsToMany(Internship::class , 'degree_internship');
-    // }
-
-    
-
 }

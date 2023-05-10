@@ -20,7 +20,7 @@ class ContactFactory extends Factory
         return [
             'email' => $this->faker->unique()->safeEmail,
             'phone' => $this->faker->phoneNumber,
-            'facebook' => $this->faker->userName, // Utiliza 'userName' para generar un nombre de usuario aleatorio
+            'facebook' => 'https://www.facebook.com/' . $this->faker->userName,
         ];
         
     }

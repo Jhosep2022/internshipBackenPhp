@@ -13,18 +13,8 @@ class Company extends Model
         'nombre',
         'descripcion',
         'fecha',
-        'contact_id',
         'foto',
-        'id'
-    
+        'contact_id'
     ];
-    
-    // union de las tablas company e contact
-    public function contacts() {
-        return $this->belongsToMany(Contact::class, 'contact_company');
-    }
-
-    public function internships() {
-        return $this->belongsToMany(Internship::class, 'company_internship');
-    }
 }
+

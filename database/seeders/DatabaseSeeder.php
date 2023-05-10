@@ -19,23 +19,10 @@ class DatabaseSeeder extends Seeder
         Degree::factory()->times(15)->create();
         Contact::factory()->times(15)->create();
         Internship::factory()->times(15)->create()->each(function ($internship) {
-            // $internship->companies()->attach(
-            //      Company::all()->random(rand(1, 3))->pluck('id')->toArray()
-            // );
-            $internship->degrees()->sync(
-                Degree::all()->random(rand(1, 3))->pluck('id')->toArray()
-            );
-            // $internship->contacts()->attach(
-            //     Contact::all()->random(rand(1, 3))->pluck('id')->toArray()
-            // );
+            
         });
         Company::factory()->times(15)->create()->each(function ($company) {
-            $company->internships()->sync(
-                 Internship::all()->random(rand(1,3))->pluck('id')->toArray()
-            );
-            $company->contacts()->sync(
-                Contact::all()->random(rand(1,2))->pluck('id')->toArray()
-            );
+            
         });
 
         // \App\Models\User::factory(10)->create();
